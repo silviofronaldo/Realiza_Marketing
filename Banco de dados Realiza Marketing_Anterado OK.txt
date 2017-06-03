@@ -1,0 +1,131 @@
+
+// OK, tabela FUNCIONÁRIO criada
+
+create table tbFuncionario
+(
+	FUNC_ID int identity(1,1) not null primary key,
+	func_nome varchar(80) not null,
+	func_cpf char(11) not null,
+	func_sexo char(1) not null,
+	func_dtNascimento date not null,
+	func_nacionalidade varchar(50),
+	func_naturalidade varchar(50),
+	func_estCivil varchar(20),
+	func_nomeMae varchar(80),
+	func_telFixo int,
+	func_telCelular int not null,
+	func_email varchar(80),
+	func_endereco varchar(80) not null,
+	func_bairro varchar(50) not null,
+	func_cidade varchar(50) not null,
+	func_numero varchar(20),
+	func_escolaridade varchar(50),
+	func_tituEleitor int,
+	func_rg int not null,
+	func_dtExpedicao date,
+	func_orgaoEmissor varchar(20),
+	func_numCTPS int,
+	func_serieCTPS int,
+	func_numPIS char(11),
+	func_agenBanco int,
+	func_contaBanco int,
+	func_remuneracao int,
+	func_dtAdmissao date not null,
+	func_dtRescisao date,
+	func_siglaUF char(2),
+	tbTipoFuncionario_ID_tipoFuncionario int foreign key references tbTipoFuncionario,
+	tbUsuario_ID_usuario int foreign key references tbUsuario,
+	tbMunicipio_ID_municipio int foreign key references tbMunicipio,
+	tbCargo_ID_cargo int foreign key references tbCargo,
+	tbDepartamento_ID_departamento int foreign key references tbDepartamento,
+	tbBanco_ID_banco int foreign key references tbBanco
+	
+)
+
+
+******************************************************************
+
+
+// OK, tabela TIPO FUNCIONARIO criada
+
+create table tbTipoFuncionario
+(
+	ID_tipoFuncionario int identity(1,1) not null primary key,
+	tipoFuncionario_descricao varchar(80) not null
+)
+
+******************************************************************
+
+
+// OK, tabela DEPARTAMENTO criada
+
+create table tbDepartamento
+(
+	ID_departamento int identity(1,1) not null primary key,
+	departamento_nome varchar(80) not null
+)
+
+******************************************************************
+
+// OK, tabela CARGO criada
+
+create table tbCargo
+(
+	ID_cargo int identity(1,1) not null primary key,
+	cargo_nome varchar(80) not null,
+	cargo_codCBO varchar(30) not null,
+	cargo_status varchar(50),
+	cargo_escolaridade varchar(80)
+)
+
+******************************************************************
+
+// OK, tabela BANCO criada
+
+create table tbBanco
+(
+	ID_banco int identity(1,1) not null primary key,
+	banco_nome varchar(80) not null
+	
+)
+
+******************************************************************
+
+// OK, tabela MUNICIPIO criada
+
+create table tbMunicipio
+(
+	ID_municipio int identity(1,1) not null primary key,
+	municipio_nome varchar(80) not null,
+	municipio_codigo varchar(50),
+	municipio_uf char(2)
+	
+)
+
+
+******************************************************************
+
+// OK, tabela USUARIO criada
+
+create table tbUsuario
+(
+	ID_usuario int identity(1,1) not null primary key,
+	usuario_login varchar(50) not null,
+	usuario_senha varchar(50) not null,
+	usuario_status varchar(20) not null,
+	usuario_ultimoAcesso date not null,
+	tbPerfilUsuario_ID_perfilUsuario int foreign key references tbPerfilUsuario
+		
+)
+
+******************************************************************
+
+// OK, tabela PERFIL USUÁRIO criada
+
+create table tbPerfilUsuario
+(
+	ID_perfilUsuario int identity(1,1) not null primary key,
+	perfilUsuario_descricao varchar(50) not null
+		
+	
+)
